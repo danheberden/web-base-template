@@ -1,4 +1,5 @@
 module.exports = function( grunt ) {
+
     grunt.registerHelper('rebuild-schema', function() {
 
         var CONFIG_FILE = '../wp-config.php';
@@ -10,9 +11,22 @@ module.exports = function( grunt ) {
         var db_conn = parseDatabaseConnectionInfo(wp_config);
 
         console.log('\tDropping Schema: ' + db_conn.schema );
+        db_conn.debug = true;
 
+        var db = require("mysql-native").createTCPClient(db_conn.host, db_conn.port); // localhost:3306 by default
+        db.auto_prepare = true;
 
+        console.log("Logging in " + db_conn.user + "@" + db_conn.host);
+        db.auth(db_conn.schema, db_conn.user, db_conn.password);
 
+        console.log('\tDropping Schema: ' + db_conn.schema );
+        db.query("DROP SCHEMA jQuery");
+
+        console.log('\tCreating Schema: ' + db_conn.schema );
+        db.query("CREATE SCHEMA jQuery");
+
+        console.log('\tClosing Connection');
+        db.close();
 
     });
 
