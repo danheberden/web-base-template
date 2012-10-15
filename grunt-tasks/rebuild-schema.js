@@ -13,10 +13,10 @@ module.exports = function( grunt ) {
         console.log('\tDropping Schema: ' + db_conn.schema );
         db_conn.debug = true;
 
-        var db = require("mysql-native").createTCPClient(db_conn.host, db_conn.port); // localhost:3306 by default
+        var db = require("mysql-native").createTCPClient(db_conn.host, db_conn.port);
         db.auto_prepare = true;
 
-        console.log("Logging in " + db_conn.user + "@" + db_conn.host);
+        console.log("\tLogging in " + db_conn.user + "@" + db_conn.host);
         db.auth(db_conn.schema, db_conn.user, db_conn.password);
 
         console.log('\tDropping Schema: ' + db_conn.schema );
