@@ -60,7 +60,7 @@ module.exports = function( grunt ) {
     function parseLineValue(input) {
         var tokens = input.split(",");
         if ( tokens.length > 1 ) {
-            var result = tokens[1].replace(' ', '');
+            var result = tokens[1].replace(/^\s+|\s+$/g,'');
             result = result.replace("'", '');
             result = result.replace(/\r/g, '');
             result = result.replace("');", '');
