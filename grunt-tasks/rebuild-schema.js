@@ -73,10 +73,10 @@ module.exports = function( grunt ) {
     function handleSuccessAuth() {
 
         console.log('\tDropping Schema: ' + db_conn.schema );
-        db.query("DROP SCHEMA jQuery");
+        db.query("DROP SCHEMA " + db_conn.schema);
 
         console.log('\tCreating Schema: ' + db_conn.schema );
-        db.query("CREATE SCHEMA jQuery");
+        db.query("CREATE SCHEMA " + db_conn.schema);
 
         console.log('\tClosing Connection');
         db.close();
