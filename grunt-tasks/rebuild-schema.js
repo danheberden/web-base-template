@@ -61,10 +61,9 @@ module.exports = function( grunt ) {
         var tokens = input.split(",");
         if ( tokens.length > 1 ) {
             var result = tokens[1].replace(' ', '');
-            result = result.replace(/\'/g, '');
+            result = result.replace("'", '');
             result = result.replace(/\r/g, '');
-            result = result.replace(')', '');
-            result = result.replace(';', '');
+            result = result.replace("');", '');
         }
         return result;
     }
