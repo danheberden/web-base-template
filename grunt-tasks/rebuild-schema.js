@@ -1,6 +1,7 @@
 module.exports = function( grunt ) {
 
-    grunt.registerHelper('rebuild-schema', function() {
+    grunt.registerTask('rebuild-schema', 'Drop and rebuild the wordpress database schema.', function() {
+        var done = this.async();
 
         var CONFIG_FILE = '../wp-config.php';
         console.log('\tParsing Wordpress Config: ' + CONFIG_FILE);

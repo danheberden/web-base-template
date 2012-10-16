@@ -5,9 +5,7 @@ module.exports = function( grunt ) {
 
       console.log("Wordpress");
 
-      var done = this.async();
-      grunt.helper('rebuild-schema');
-
+      grunt.task.run('rebuild-schema');
 
   });
 };
